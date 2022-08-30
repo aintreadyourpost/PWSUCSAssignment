@@ -3,6 +3,7 @@ from colorama import Fore, Style, Back
 import sys
 
 #Create global variables
+rooml = ['101','102','103','104','201','202','203','204','301','302','303','304']
 ava = [] 
 occ = []
 res = []
@@ -19,9 +20,13 @@ file_res = open('res.txt','r')
 res = [line.rstrip('\n') for line in file_res]
 file_res.close()
 
+#Data check
+if rooml != ava + occ + res:
+    print('----- DATA IS INCORRECT -----')
+    print('Please check and correct the data from text files.')
+
 #Func changing the status of the room
 def roomstatchange():
-    rooml = ava + res + occ
     avasort = sorted(str(x) for x in ava)   
     occsort = sorted(str(x) for x in occ)
     ressort = sorted(str(x) for x in res)
@@ -172,8 +177,7 @@ def mainmenu():
     print('\n----------------------------------------------------------------------')
     menuchoice = input('\nChoose your option: ')
     while menuchoice not in ('1','2','3','4'): #Input validation
-        menuchoic
-aintreadyourpost e = input('\nPlease enter a valid choice: ')
+        menuchoice = input('\nPlease enter a valid choice: ')
         break
     if menuchoice == '1':
         roomlist()
