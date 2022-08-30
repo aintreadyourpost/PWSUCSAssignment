@@ -6,7 +6,7 @@ import sys
 ava = [] 
 occ = []
 res = []
-seperator=', '
+seperator = ', '
 
 #Reading data from script booting
 file_ava = open('ava.txt','r')
