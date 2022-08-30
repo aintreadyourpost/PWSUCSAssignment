@@ -103,7 +103,7 @@ def roomstatchange():
         while statchoice not in ['a','o']:  #Input validation
             print('\n----- INVALID INPUT -----')
             print('Please re-enter your choice.\n')
-            statchoice=str.lower(input(f'Do you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.GREEN}{Style.BRIGHT}AVAILABLE (A){Style.RESET_ALL}?: '))
+            statchoice = str.lower(input(f'Do you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.GREEN}{Style.BRIGHT}AVAILABLE (A){Style.RESET_ALL}?: '))
         if statchoice == 'o':
             res.remove(roomchoice)
             occ.append(roomchoice)
@@ -170,9 +170,10 @@ def mainmenu():
     print('\n3. Show hotel map.')
     print('\n4. Exit')
     print('\n----------------------------------------------------------------------')
-    menuchoice=input('\nChoose your option: ')
+    menuchoice = input('\nChoose your option: ')
     while menuchoice not in ('1','2','3','4'): #Input validation
-        menuchoice=input('\nPlease enter a valid choice: ')
+        menuchoic
+aintreadyourpost e = input('\nPlease enter a valid choice: ')
         break
     if menuchoice == '1':
         roomlist()
