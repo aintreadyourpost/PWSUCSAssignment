@@ -25,9 +25,6 @@ def roomstatchange():
     avasort = sorted(str(x) for x in ava)   
     occsort = sorted(str(x) for x in occ)
     ressort = sorted(str(x) for x in res)
-    file_ava = open('ava.txt','r+')
-    file_occ = open('occ.txt','r+')
-    file_res = open('res.txt','r+')
     print('\n----------------------------------------------------------------------')
     print('\n                         <LIST OF ROOMS>')
     print(f'\n{Fore.GREEN}{Style.BRIGHT}Available room(s):{Style.RESET_ALL}',seperator.join(avasort))
@@ -49,46 +46,51 @@ def roomstatchange():
         if statchoice == 'o':
             ava.remove(roomchoice)              #
             occ.append(roomchoice)              #
-            for x in ava:                       #
-                file_ava.write(x +'\n')         # Append and remove lists
-            for x in occ:                       # Also, log the changes into external storage files
+            file_ava = open('ava.txt','w')      #
+            file_occ = open('occ.txt','w')      #
+            for x in ava:                       # Append and remove lists
+                file_ava.write(x +'\n')         # Also, log the changes into external storage files
+            for x in occ:                       # 
                 file_occ.write(x +'\n')         # 
             file_ava.close()                    #
             file_occ.close()                    #
-            file_res.close()                    #
             print('\nRoom status changed successfully!')
             print('Room',roomchoice,f'is now {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
             returnorend()
         if statchoice == 'r':
-            ava.remove(roomchoice)              #
-            res.append(roomchoice)              #
-            for x in ava:                       #
-                file_ava.write(x + '\n')        # Append and remove lists
-            for x in res:                       # Also, log the changes into external storage files
-                file_res.write(x + '\n')        #
-            file_ava.close()                    #
-            file_occ.close()                    #
-            file_res.close()                    #
+            ava.remove(roomchoice)              
+            res.append(roomchoice)
+            file_ava = open('ava.txt','w')
+            file_res = open('res.txt','w')   
+            file_ava.write('')
+            file_res.write('')
+            for x in ava:                       
+                file_ava.write(x + '\n')        
+            for x in res:
+                file_res.write(x + '\n')
+            file_ava.close()
+            file_res.close()
             print('\nRoom status changed successfully!')
             print('\nRoom',roomchoice,f'is now {Fore.YELLOW}{Style.BRIGHT}RESERVED{Style.RESET_ALL}.')
             returnorend()
     if roomchoice in occ:   #Changing room status if room is already occupied
         print('\nRoom',roomchoice,f'is {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
-        statchoice = str.lower(input(f'\nDo you want to make it {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}? Enter Y for {Fore.GREEN}{Style.BRIGHT}yes{Style.RESET_ALL} or N for {Fore.RED}{Style.BRIGHT}no{Style.RESET_ALL}: '))
+        statchoice = str.lower(input(f'Do you want to make it {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}? Enter Y for {Fore.GREEN}{Style.BRIGHT}yes{Style.RESET_ALL} or N for {Fore.RED}{Style.BRIGHT}no{Style.RESET_ALL}: '))
         while statchoice not in ['y','n']:  #Input validation
             print('\n----- INVALID INPUT -----')
-            print('Please re-enter your choice.')
-            statchoice=str.lower(input(f'\nDo you want to make it {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}? Enter Y for {Fore.GREEN}{Style.BRIGHT}yes{Style.RESET_ALL} or N for {Fore.RED}{Style.BRIGHT}no{Style.RESET_ALL}: '))
+            print('Please re-enter your choice.\n')
+            statchoice=str.lower(input(f'Do you want to make it {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}? Enter Y for {Fore.GREEN}{Style.BRIGHT}yes{Style.RESET_ALL} or N for {Fore.RED}{Style.BRIGHT}no{Style.RESET_ALL}: '))
         if statchoice == 'y':
-            occ.remove(roomchoice)              #
-            ava.append(roomchoice)              #
-            for x in ava:                       #
-                file_ava.write(x + '\n')        # Append and remove lists
-            for x in occ:                       #Also, log the changes into external storage files
-                file_occ.writelines(x +'\n')    # 
-            file_ava.close()                    #
-            file_occ.close()                    #
-            file_res.close()                    #
+            occ.remove(roomchoice)
+            ava.append(roomchoice)
+            file_ava = open('ava.txt','w')
+            file_occ = open('occ.txt','w')
+            for x in ava:
+                file_ava.write(x + '\n')
+            for x in occ:
+                file_occ.writelines(x +'\n')    
+            file_ava.close()
+            file_occ.close()
             print('\nRoom status changed successfully!')
             print('\nRoom',roomchoice,f'is now {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}.')
             returnorend()
@@ -97,34 +99,36 @@ def roomstatchange():
             returnorend()  
     if roomchoice in res:   #Changing room status if room is already reserved
         print('\nRoom',roomchoice,f'is {Fore.YELLOW}{Style.BRIGHT}RESERVED{Style.RESET_ALL}.')
-        statchoice = str.lower(input(f'\nDo you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.GREEN}{Style.BRIGHT}AVAILABLE (A){Style.RESET_ALL}?: '))
-        while statchoice not in ['r','a']:  #Input validation
+        statchoice = str.lower(input(f'Do you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.GREEN}{Style.BRIGHT}AVAILABLE (A){Style.RESET_ALL}?: '))
+        while statchoice not in ['a','o']:  #Input validation
             print('\n----- INVALID INPUT -----')
-            print('Please re-enter your choice.')
-            statchoice=str.lower(input(f'\nDo you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.GREEN}{Style.BRIGHT}AVAILABLE (A){Style.RESET_ALL}?: '))
+            print('Please re-enter your choice.\n')
+            statchoice=str.lower(input(f'Do you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.GREEN}{Style.BRIGHT}AVAILABLE (A){Style.RESET_ALL}?: '))
         if statchoice == 'o':
-            res.remove(roomchoice)              #
-            occ.append(roomchoice)              #
-            for x in res:                       #
-                file_res.write(x + '\n')        # Append and remove lists
-            for x in occ:                       # Also, log the changes into external storage files
-                file_occ.write(x + '\n')        # 
-            file_ava.close()                    #
-            file_occ.close()                    #
-            file_res.close()                    #
+            res.remove(roomchoice)
+            occ.append(roomchoice)
+            file_occ = open('occ.txt','w')
+            file_res = open('res.txt','w')
+            for x in res:
+                file_res.write(x + '\n')
+            for x in occ:
+                file_occ.write(x + '\n')
+            file_occ.close()
+            file_res.close()
             print('\nRoom status changed successfully!')
             print('\nRoom',roomchoice,f'is now {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
             returnorend()
         if statchoice == 'a':
-            res.remove(roomchoice)              #
-            ava.append(roomchoice)              #
-            for x in ava:                       #
-                file_ava.write(x + '\n')        # Append and remove lists
-            for x in occ:                       # Also, log the changes into external storage files
-                file_occ.write(x + '\n')        # 
-            file_ava.close()                    #
-            file_occ.close()                    #
-            file_res.close()                    #
+            res.remove(roomchoice)
+            ava.append(roomchoice)
+            file_ava = open('ava.txt','w')
+            file_res = open('res.txt','w')
+            for x in ava:
+                file_ava.write(x + '\n')
+            for x in res:
+                file_res.write(x + '\n')
+            file_ava.close()
+            file_res.close()
             print('\nRoom status changed successfully!')
             print('\nRoom',roomchoice,f'is now {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}.')
             returnorend()
