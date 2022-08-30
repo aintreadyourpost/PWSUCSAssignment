@@ -21,7 +21,7 @@ file_res.close()
 
 #Func changing the status of the room
 def roomstatchange():
-    rooml=ava+res+occ
+    rooml = ava + res + occ
     avasort = sorted(str(x) for x in ava)   
     occsort = sorted(str(x) for x in occ)
     ressort = sorted(str(x) for x in res)
@@ -163,7 +163,7 @@ def returnorend():
 def mainmenu():
     global menuchoice
     print('\n----------------------------------------------------------------------')
-    print(f'\n                    {Style.BRIGHT}{Fore.RED}{Back.WHITE}WELCOME TO BUV SUNSHINE HOTEL{Style.RESET_ALL}') #Main menu
+    print(f'\n                    {Style.BRIGHT}{Fore.RED}{Back.WHITE}WELCOME TO BUV SUNSHINE HOTEL{Style.RESET_ALL}')
     print('\n                              MAIN MENU')
     print('\n1. View list of rooms.')
     print('\n2. Change room status.')
