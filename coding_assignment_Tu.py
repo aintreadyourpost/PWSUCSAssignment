@@ -20,10 +20,13 @@ file_res = open('res.txt','r')
 res = [line.rstrip('\n') for line in file_res]
 file_res.close()
 
-#Data check
-if rooml != ava + occ + res:
+#Data integrity check
+L = ava + occ + res
+list.sort(L)
+if rooml != L:
     print('----- DATA IS INCORRECT -----')
-    print('Please check and correct the data from text files.')
+    print('\nPlease check and correct the data from text files.')
+    sys.exit()
 
 #Func changing the status of the room
 def roomstatchange():
@@ -178,7 +181,6 @@ def mainmenu():
     menuchoice = input('\nChoose your option: ')
     while menuchoice not in ('1','2','3','4'): #Input validation
         menuchoice = input('\nPlease enter a valid choice: ')
-        break
     if menuchoice == '1':
         roomlist()
     if menuchoice == '2':
