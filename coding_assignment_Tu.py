@@ -66,7 +66,7 @@ def roomstatchange():
             file_occ.close()                    #
             print('\nRoom status changed successfully!')
             print(f'Room {roomchoice} is now {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
-        if statchoice == 'r':
+        elif statchoice == 'r':
             ava.remove(roomchoice)              
             res.append(roomchoice)
             file_ava = open('ava.txt','w')
@@ -102,7 +102,7 @@ def roomstatchange():
             file_occ.close()
             print('\nRoom status changed successfully!')
             print(f'\nRoom {roomchoice} is now {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}.')
-        if statchoice == 'n':
+        elif statchoice == 'n':
             print('\nRoom status remained.')
         returnorend()  
     elif roomchoice in res:   #Changing room status if room is already reserved
@@ -125,7 +125,7 @@ def roomstatchange():
             file_res.close()
             print('\nRoom status changed successfully!')
             print(f'\nRoom {roomchoice} is now {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
-        if statchoice == 'a':
+        elif statchoice == 'a':
             res.remove(roomchoice)
             ava.append(roomchoice)
             file_ava = open('ava.txt','w')
