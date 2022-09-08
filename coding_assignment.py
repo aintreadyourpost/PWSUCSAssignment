@@ -1,6 +1,7 @@
 #Import libs
 from colorama import Fore, Style, Back
 import sys
+import hotelmap
 
 #Create global variables
 rooml = ['101','102','103','104','201','202','203','204','301','302','303','304']
@@ -185,7 +186,8 @@ def mainmenu():
     elif menuchoice == '2':
         roomstatchange()
     elif menuchoice == '3':
-        pass   
+        hotelmap()
+        returnorend()
     elif menuchoice == '4':
         print(f'\n----------------------------------------------------------------------\n{Fore.BLACK}{Back.WHITE}We hope to see you again! Good bye!{Style.RESET_ALL}')
         sys.exit()
