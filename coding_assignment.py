@@ -31,7 +31,6 @@ if rooml != L:
 
 #Func changing the status of the roomc
 def roomstatchange():
-    global roomchoice, statchoice
     avasort = sorted(str(x) for x in ava)   
     occsort = sorted(str(x) for x in occ)
     ressort = sorted(str(x) for x in res)
