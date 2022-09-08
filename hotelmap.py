@@ -21,12 +21,10 @@ file_res.close()
 #Title of the map
 tt.title('BUV Sunshine Hotel Map')
 
-#Set speed
+#Set turtle, clear screen, speed and initial coordination
 t = tt.Turtle()
-
-#Set initial coordination
 t.speed(999)
-t.penup()
+tt.clearscreen()
 t.goto(-200,300)
 t.pendown()
 
@@ -61,18 +59,13 @@ def nbox(x,y,z): #x is x-coor, y is y-coor and z is the left-most room of the fl
     t.fd(100)
     t.lt(90)
     t.penup()
-    t.goto(x+50,y-30)
-    t.pendown()
+    t.goto(x+55,y-30)
     for i in range(4):
         t.write('Room '+str(z), align = 'center')
         z+=1
-        t.penup()
         t.fd(100)
-    t.penup()
     t.goto(0,y-90)
-    t.pendown()
     t.write('Floor '+str(round(z/100)),align = 'center')     
-    t.penup()
     t.goto(x,y-100)
     t.pendown()
 #Legends:
@@ -91,9 +84,7 @@ def legends():
     t.rt(90)
     t.penup()
     t.goto(330,15)
-    t.pendown()
     t.write('Legends:',align = 'center')
-    t.penup()
     t.goto(375,80)
     t.fillcolor('green')
     t.begin_fill()
@@ -102,7 +93,6 @@ def legends():
         t.rt(90)
     t.end_fill()
     t.rt(90)
-    t.penup()
     t.fd(45)
     t.lt(90)
     t.fillcolor('yellow')
@@ -112,7 +102,6 @@ def legends():
         t.rt(90)
     t.end_fill()
     t.rt(90)
-    t.penup()
     t.fd(45)
     t.lt(90)
     t.fillcolor('red')
@@ -131,8 +120,8 @@ def legends():
     t.fd(46)
     t.lt(90)
     t.write('Occupied room', align = 'center')
+    t.pendown()
     
-
 #Hotel map drawing
 for i in range(101,105):
     drawroom(i)
@@ -146,5 +135,6 @@ for i in range(301,305):
     drawroom(i)
     t.fd(100)
 nbox(-200,-200,301)
-
 legends()
+
+# tt.bye()

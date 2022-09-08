@@ -196,7 +196,7 @@ def hotelmap():
         t.fd(100)
         t.lt(90)
         t.penup()
-        t.goto(x+50,y-30)
+        t.goto(x+55,y-30)
         for i in range(4):
             t.write('Room '+str(z), align = 'center')
             z+=1
@@ -308,10 +308,10 @@ def mainmenu():
         roomstatchange()
     elif menuchoice == '3':
         hotelmap()
-        mn = input(f'\nDo you want to return to main menu or end your session? \nEnter 1 to return to main menu, or 2 to end your session: ')
+        mn = input('\nDo you want to return to main menu or end your session? \nEnter 1 to return to main menu, or 2 to end your session: ')
         while mn not in ['1','2']:    #Input validation
             print('\n----- INVALID INPUT -----')
-            mn = input(f'\nDo you want to return to main menu or end your session? \nEnter 1 to return to main menu, or 2 to end your session: ')
+            mn = input('\nDo you want to return to main menu or end your session? \nEnter 1 to return to main menu, or 2 to end your session: ')
         if mn == '1':
             tt.bye()
             mainmenu()
