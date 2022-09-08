@@ -59,9 +59,9 @@ def roomstatchange():
             file_ava = open('ava.txt','w')      #
             file_occ = open('occ.txt','w')      #
             for x in ava:                       # Append and remove lists
-                file_ava.write(x +'\n')         # Also, log the changes into external storage files
+                file_ava.write(x + '\n')        # Also, log the changes into external storage files
             for x in occ:                       # 
-                file_occ.write(x +'\n')         # 
+                file_occ.write(x + '\n')        # 
             file_ava.close()                    #
             file_occ.close()                    #
             print('\nRoom status changed successfully!')
@@ -71,8 +71,6 @@ def roomstatchange():
             res.append(roomchoice)
             file_ava = open('ava.txt','w')
             file_res = open('res.txt','w')   
-            file_ava.write('')
-            file_res.write('')
             for x in ava:                       
                 file_ava.write(x + '\n')        
             for x in res:
@@ -97,7 +95,7 @@ def roomstatchange():
             for x in ava:
                 file_ava.write(x + '\n')
             for x in occ:
-                file_occ.writelines(x +'\n')    
+                file_occ.write(x + '\n')    
             file_ava.close()
             file_occ.close()
             print('\nRoom status changed successfully!')
@@ -158,7 +156,7 @@ def roomlist():
 def returnorend():
     print('\nDo you want to return to main menu or end your session?')
     menu = input('Enter 1 to return to main menu, or 2 to end your session: ')
-    while menu not in ('1','2'):    #Input validation
+    while menu not in ['1','2']:    #Input validation
         print('\n----- INVALID INPUT -----')
         menu = input('\nEnter 1 to return to main menu, or 2 to end your session: ')
     if menu == '1':
@@ -180,7 +178,7 @@ def mainmenu():
         \n----------------------------------------------------------------------'''
     print(prmain)
     menuchoice = input('\nChoose your option: ')
-    while menuchoice not in ('1','2','3','4'): #Input validation
+    while menuchoice not in ['1','2','3','4']: #Input validation
         menuchoice = input('\nPlease enter a valid choice: ')
     if menuchoice == '1':
         roomlist()
