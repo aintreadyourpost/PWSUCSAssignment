@@ -41,11 +41,11 @@ def roomstatchange():
         \n{Fore.YELLOW}{Style.BRIGHT}Reserved room(s):{Style.RESET_ALL}  {seperator.join(ressort)}
         \n----------------------------------------------------------------------'''
     print(prstat)
-    roomchoice = str.lower(input('\nPlease enter the room that you want to change: '))
+    roomchoice = str(input('\nPlease enter the room that you want to change: '))
     while roomchoice not in rooml:    #Input validation
         print('\n----- INVALID INPUT -----')
         print('Please re-enter your choice.')
-        roomchoice = str.lower(input('\nPlease enter the room that you want to change: '))
+        roomchoice = str(input('\nPlease enter the room that you want to change: '))
     if roomchoice in ava:   #Changing room status if room is already availble
         print(f'\nRoom {roomchoice} is {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}.')
         statchoice = str.lower(input(f'\nDo you want to make it {Fore.RED}{Style.BRIGHT}OCCUPIED (O){Style.RESET_ALL} or {Fore.YELLOW}{Style.BRIGHT}RESERVED (R){Style.RESET_ALL}?: '))
@@ -81,7 +81,7 @@ def roomstatchange():
             print(f'\nRoom {roomchoice} is now {Fore.YELLOW}{Style.BRIGHT}RESERVED{Style.RESET_ALL}.')
         returnorend()
     elif roomchoice in occ:   #Changing room status if room is already occupied
-        print('\nRoom',roomchoice,f'is {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
+        print(f'\nRoom {roomchoice} is {Fore.RED}{Style.BRIGHT}OCCUPIED{Style.RESET_ALL}.')
         statchoice = str.lower(input(f'Do you want to make it {Fore.GREEN}{Style.BRIGHT}AVAILABLE{Style.RESET_ALL}? Enter Y for {Fore.GREEN}{Style.BRIGHT}yes{Style.RESET_ALL} or N for {Fore.RED}{Style.BRIGHT}no{Style.RESET_ALL}: '))
         while statchoice not in ['y','n']:  #Input validation
             print('\n----- INVALID INPUT -----')
